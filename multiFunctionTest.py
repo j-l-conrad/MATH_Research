@@ -15,13 +15,13 @@ def LReLU(x):
 
 SCHDstock = pandas.read_csv('SCHD_Technical_Analysis.csv') #Store stock data in variable
 SCHDstock = SCHDstock.iloc[:, 3:] #Chop off the index columns and the date column
-SCHDstock = pandas.DataFrame(preprocessing.normalize(SCHDstock), columns=SCHDstock.columns) #Normalize the data
+#SCHDstock = pandas.DataFrame(preprocessing.normalize(SCHDstock), columns=SCHDstock.columns) #Normalize the data
 SPYstock = pandas.read_csv('SCHD_Technical_Analysis.csv') #Store stock data in variable
 SPYstock = SPYstock.iloc[:, 3:] #Chop off the index columns and the date column
-SPYstock = pandas.DataFrame(preprocessing.normalize(SPYstock), columns=SPYstock.columns) #Normalize the data
+#SPYstock = pandas.DataFrame(preprocessing.normalize(SPYstock), columns=SPYstock.columns) #Normalize the data
 VUGstock = pandas.read_csv('SCHD_Technical_Analysis.csv') #Store stock data in variable
 VUGstock = VUGstock.iloc[:, 3:] #Chop off the index columns and the date column
-VUGstock = pandas.DataFrame(preprocessing.normalize(VUGstock), columns=VUGstock.columns) #Normalize the data
+#VUGstock = pandas.DataFrame(preprocessing.normalize(VUGstock), columns=VUGstock.columns) #Normalize the data
 
 stocks = [SCHDstock, SPYstock, VUGstock]
 
@@ -30,8 +30,10 @@ finalScore = [] #array to hold the mean and std of the scores of each model
 
 activationFunctions = [activations.relu, activations.tanh, LReLU, activations.swish, activations.gelu, activations.sigmoid]
 activationNames = ["ReLU", "Tanh", "LReLU", "Swish", "GeLU", "Logistic Sigmoid"]
-optimizationFunctions = [optimizers.SGD(learning_rate=.01, momentum=0.9), optimizers.Adagrad(learning_rate=.01), optimizers.RMSprop(learning_rate=.01), optimizers.Adam(learning_rate=.01)]
-optimizationNames = ["SGD with Momentum", "Adagrad", "RMSprop", "Adam"]
+#optimizationFunctions = [optimizers.SGD(learning_rate=.01, momentum=0.9), optimizers.Adagrad(learning_rate=.01), optimizers.RMSprop(learning_rate=.01), optimizers.Adam(learning_rate=.01)]
+#optimizationNames = ["SGD with Momentum", "Adagrad", "RMSprop", "Adam"]
+optimizationFunctions = [optimizers.Adagrad(learning_rate=.01), optimizers.RMSprop(learning_rate=.01), optimizers.Adam(learning_rate=.01)]
+optimizationNames = ["Adagrad", "RMSprop", "Adam"]
 stockNames = ["SCHD", "SPY", "VUG"]
 aNameIndex = -1
 oNameIndex = -1
